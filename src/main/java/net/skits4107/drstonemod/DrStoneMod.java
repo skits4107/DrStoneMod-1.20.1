@@ -1,6 +1,7 @@
 package net.skits4107.drstonemod;
 
 import com.mojang.logging.LogUtils;
+import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -12,6 +13,8 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.skits4107.drstonemod.entity.ModEntities;
+import net.skits4107.drstonemod.entity.client.PetrifiedEntityRenderer;
 import net.skits4107.drstonemod.item.ModItems;
 import org.slf4j.Logger;
 
@@ -22,7 +25,7 @@ public class DrStoneMod
     // Define mod id in a common place for everything to reference
     public static final String MOD_ID = "drstonemod";
     // Directly reference a slf4j logger
-    private static final Logger LOGGER = LogUtils.getLogger();
+    public static final Logger LOGGER = LogUtils.getLogger();
     // Create a Deferred Register to hold Blocks which will all be registered under the "examplemod" namespace
 
 
@@ -33,7 +36,7 @@ public class DrStoneMod
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
         ModItems.register(modEventBus);
-
+        ModEntities.register(modEventBus);
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
@@ -72,7 +75,7 @@ public class DrStoneMod
         public static void onClientSetup(FMLClientSetupEvent event)
         {
             // Some client setup code
-
+            EntityRenderers.register(ModEntities.PETRIFIED_ENTITY.get(), PetrifiedEntityRenderer::new);
         }
     }
 }

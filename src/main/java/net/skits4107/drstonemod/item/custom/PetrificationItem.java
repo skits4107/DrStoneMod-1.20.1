@@ -12,6 +12,7 @@ import net.minecraft.world.entity.projectile.Snowball;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.skits4107.drstonemod.entity.custom.ThrownPetrificationDeviceEntity;
 
 public class PetrificationItem extends Item {
     public PetrificationItem(Properties pProperties) {
@@ -23,7 +24,7 @@ public class PetrificationItem extends Item {
         ItemStack itemstack = pPlayer.getItemInHand(pUsedHand);
         pLevel.playSound((Player)null, pPlayer.getX(), pPlayer.getY(), pPlayer.getZ(), SoundEvents.SNOWBALL_THROW, SoundSource.NEUTRAL, 0.5F, 0.4F / (pLevel.getRandom().nextFloat() * 0.4F + 0.8F));
         if (!pLevel.isClientSide) {
-            Snowball snowball = new Snowball(pLevel, pPlayer);
+            ThrownPetrificationDeviceEntity snowball = new ThrownPetrificationDeviceEntity(pPlayer, pLevel);
             snowball.setItem(itemstack);
             snowball.shootFromRotation(pPlayer, pPlayer.getXRot(), pPlayer.getYRot(), 0.0F, 1.5F, 1.0F);
             pLevel.addFreshEntity(snowball);
