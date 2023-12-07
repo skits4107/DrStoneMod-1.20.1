@@ -50,7 +50,7 @@ public class PetrifiedEntityRenderer extends EntityRenderer<PetrifiedEntity> {
     @Override
     public ResourceLocation getTextureLocation(PetrifiedEntity pEntity) {
         return new ResourceLocation("minecraft:textures/block/cobblestone.png");
-        //changed what resource location I was returning.
+        //changed what resource location I was returning from the original ice and fire mod code.
     }
 
 
@@ -99,7 +99,8 @@ public class PetrifiedEntityRenderer extends EntityRenderer<PetrifiedEntity> {
             fakeEntity = this.hollowEntityMap.get(entityIn.getTrappedEntityTypeString());
         }
 
-        //From here on I do things somewhat differently from the original ice and fire mod
+        //From here on I do things fairly differently from the original ice and fire mod as I do not worry about the special cases that existed in their mod
+        //I also removed the preRenderCallback and do not have to worry about cracked amount.
         RenderType tex = model.renderType(new ResourceLocation("minecraft:textures/block/cobblestone.png"));
         VertexConsumer ivertexbuilder = bufferIn.getBuffer(tex);
 
