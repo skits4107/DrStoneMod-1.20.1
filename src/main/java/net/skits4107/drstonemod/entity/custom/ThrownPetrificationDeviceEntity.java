@@ -47,6 +47,7 @@ public class ThrownPetrificationDeviceEntity extends ThrowableItemProjectile {
                     entity.remove(Entity.RemovalReason.KILLED);
                     level.addFreshEntity(petrifiedEntity);
                 }
+                this.discard();
             }
         }
         //super.onHitEntity(pResult);

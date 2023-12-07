@@ -5,29 +5,28 @@ import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.PigModel;
+import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelLayers;
+
+import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.entity.EntityRenderer;
-import net.minecraft.client.renderer.entity.EntityRendererProvider;
-import net.minecraft.client.renderer.entity.LivingEntityRenderer;
-import net.minecraft.client.renderer.entity.RenderLayerParent;
+import net.minecraft.client.renderer.entity.*;
 import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.client.renderer.texture.TextureAtlas;
-import net.minecraft.client.renderer.texture.TextureManager;
+
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.Pose;
-import net.minecraft.world.phys.Vec3;
+
+import net.minecraftforge.registries.ForgeRegistries;
 import net.skits4107.drstonemod.DrStoneMod;
 import net.skits4107.drstonemod.entity.custom.PetrifiedEntity;
 import org.jetbrains.annotations.NotNull;
 import org.joml.Quaternionf;
-import org.joml.Vector3f;
-import org.joml.Vector3fc;
 
+import java.lang.reflect.Constructor;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 
 //significant amounts of code have been reused from the Ice and Fire mod's
@@ -69,8 +68,35 @@ public class PetrifiedEntityRenderer extends EntityRenderer<PetrifiedEntity> {
             EntityRenderer renderer = Minecraft.getInstance().getEntityRenderDispatcher().renderers.get(entityIn.getTrappedEntityType());
             if (renderer != null) {
                 if (renderer instanceof LivingEntityRenderer<?, ?>) {
-                    //get model if it is a living entity
+                    //this gets the model if it is a living entity, but it is only a shallow copy, meaning
+                    // it might occasionally play unwanted animations.
                     model = ((LivingEntityRenderer<?, ?>) renderer).getModel();
+                    //the code for cloning the model below was not a part of the original ice and fire mod and
+                    // was written by the creator of the dr stone mod (me). I do not know how good this code is,
+                    // but it works at preventing unwanted animations.
+                    EntityModel<?> clonedModel = null;
+                    try {
+                        Constructor<?> constructor = model.getClass().getDeclaredConstructor(ModelPart.class);
+                        constructor.setAccessible(true);
+                        ResourceLocation entityTypeName = ForgeRegistries.ENTITY_TYPES.getKey(entityIn.getTrappedEntityType());
+                        String entityName = entityTypeName.toString(); //get resource location of entity ex: "minecraft:horse"
+                        //location.tostring looks like "minecraft:horse#main" in order to compare we strip away that extra part
+                        Optional<ModelLayerLocation> modelLayerOpt = ModelLayers.getKnownLocations()
+                                .filter(location -> location.toString().split("#")[0].equals(entityName))
+                                .findFirst();
+                        //if we found a model layer
+                        if (modelLayerOpt.isPresent()) {
+                            ModelLayerLocation modelLayer = modelLayerOpt.get(); ///get model layer
+                            //create new model for the relevant type of entity
+                            clonedModel = (EntityModel<?>) constructor.newInstance(context.bakeLayer(modelLayer));
+                        }
+                    } catch (Exception e) {
+                        // Handle exceptions
+                        e.printStackTrace();
+                    }
+                    if (clonedModel != null){ //if we couldn't get a cloned model (perhaps a modded entity) then we just use the shallow copy.
+                        model = clonedModel;
+                    }
                 }
                 //store model in cache
                 modelMap.put(entityIn.getTrappedEntityTypeString(), model);
@@ -79,6 +105,7 @@ public class PetrifiedEntityRenderer extends EntityRenderer<PetrifiedEntity> {
         if (model == null)
             return;
 
+        //the code for getting the fake entity is from the original ice and fire mod
         //fake entity used for setting animation
         Entity fakeEntity = null;
         if (this.hollowEntityMap.get(entityIn.getTrappedEntityTypeString()) == null) {
@@ -126,9 +153,9 @@ public class PetrifiedEntityRenderer extends EntityRenderer<PetrifiedEntity> {
 
         matrixStackIn.popPose();
 
-
-
     }
+
+
 
 
 }
