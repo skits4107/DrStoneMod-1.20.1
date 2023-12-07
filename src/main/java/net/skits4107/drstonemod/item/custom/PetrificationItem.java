@@ -24,7 +24,7 @@ public class PetrificationItem extends Item {
         ItemStack itemstack = pPlayer.getItemInHand(pUsedHand);
         pLevel.playSound((Player)null, pPlayer.getX(), pPlayer.getY(), pPlayer.getZ(), SoundEvents.SNOWBALL_THROW, SoundSource.NEUTRAL, 0.5F, 0.4F / (pLevel.getRandom().nextFloat() * 0.4F + 0.8F));
         if (!pLevel.isClientSide) {
-            ThrownPetrificationDeviceEntity snowball = new ThrownPetrificationDeviceEntity(pPlayer, pLevel);
+            ThrownPetrificationDeviceEntity snowball = new ThrownPetrificationDeviceEntity(pLevel, pPlayer);
             snowball.setItem(itemstack);
             snowball.shootFromRotation(pPlayer, pPlayer.getXRot(), pPlayer.getYRot(), 0.0F, 1.5F, 1.0F);
             pLevel.addFreshEntity(snowball);

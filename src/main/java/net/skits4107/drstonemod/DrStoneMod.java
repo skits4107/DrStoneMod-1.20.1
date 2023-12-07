@@ -2,6 +2,7 @@ package net.skits4107.drstonemod;
 
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -75,6 +76,7 @@ public class DrStoneMod
         public static void onClientSetup(FMLClientSetupEvent event)
         {
             // Some client setup code
+            EntityRenderers.register(ModEntities.THROWN_DEVICE.get(), ThrownItemRenderer::new);
             EntityRenderers.register(ModEntities.PETRIFIED_ENTITY.get(), PetrifiedEntityRenderer::new);
         }
     }

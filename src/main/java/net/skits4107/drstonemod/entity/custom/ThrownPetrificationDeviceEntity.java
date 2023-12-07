@@ -20,10 +20,11 @@ public class ThrownPetrificationDeviceEntity extends ThrowableItemProjectile {
     }
 
     public ThrownPetrificationDeviceEntity(Level pLevel) {
+
         super(ModEntities.THROWN_DEVICE.get(), pLevel);
     }
 
-    public ThrownPetrificationDeviceEntity(LivingEntity pShooter, Level pLevel) {
+    public ThrownPetrificationDeviceEntity(Level pLevel, LivingEntity pShooter) {
         super(ModEntities.THROWN_DEVICE.get(), pShooter, pLevel);
     }
 
@@ -38,16 +39,18 @@ public class ThrownPetrificationDeviceEntity extends ThrowableItemProjectile {
         if (entity instanceof LivingEntity){
             if (entity != null && !(entity instanceof Player)){
                 PetrifiedEntity petrifiedEntity = PetrifiedEntity.petrifyEntity((LivingEntity) entity);
-
+                Level level = entity.level();
                 petrifiedEntity.absMoveTo(entity.getX(), entity.getY(), entity.getZ(), entity.getYRot(), entity.getXRot());
                 petrifiedEntity.yBodyRot = entity.getYRot();
 
-                if (!entity.level().isClientSide) {
+                if (!level.isClientSide) {
                     entity.remove(Entity.RemovalReason.KILLED);
-                    entity.level().addFreshEntity(petrifiedEntity);
+                    level.addFreshEntity(petrifiedEntity);
                 }
             }
         }
-        super.onHitEntity(pResult);
+        //super.onHitEntity(pResult);
     }
+
+
 }

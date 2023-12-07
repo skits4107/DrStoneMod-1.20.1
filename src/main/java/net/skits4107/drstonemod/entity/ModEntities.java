@@ -21,9 +21,9 @@ public class ModEntities {
 
     public static final RegistryObject<EntityType<PetrifiedEntity>> PETRIFIED_ENTITY = registerEntity(EntityType.Builder.of(PetrifiedEntity::new, MobCategory.CREATURE).sized(0.5F, 0.5F), "petrified_entity");
 
-    public static final RegistryObject<EntityType<ThrownPetrificationDeviceEntity>> THROWN_DEVICE = registerEntity(EntityType.Builder
-            .<ThrownPetrificationDeviceEntity>of(ThrownPetrificationDeviceEntity::new, MobCategory.MISC)
-            .sized(0.5F,0.5F), "thrown_device");
+    public static final RegistryObject<EntityType<ThrownPetrificationDeviceEntity>> THROWN_DEVICE = ENTITIES.register("thrown_device", () -> EntityType.Builder.
+            <ThrownPetrificationDeviceEntity>of(ThrownPetrificationDeviceEntity::new, MobCategory.MISC).
+            sized(0.5F,0.5F).build("thrown_device"));
 
     private static final <T extends Entity> RegistryObject<EntityType<T>> registerEntity(EntityType.Builder<T> builder, String entityName) {
         return ENTITIES.register(entityName, () -> builder.build(entityName));
