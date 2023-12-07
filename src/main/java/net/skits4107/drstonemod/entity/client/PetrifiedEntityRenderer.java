@@ -30,9 +30,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-//significant amounts of code have been reused from the Ice and Fire mod's RenderStoneStatue class.
+//significant amounts of code have been reused from the Ice and Fire mod's
+// RenderStoneStatue class (created by Raptorfarian and Alexthe666) under the LGPL license.
 // there are various differences within the renderer but a lot is the same.
-//there are comments further elaborating on modifications
+//there are comments in the class that further elaborate on modifications.
 public class PetrifiedEntityRenderer extends EntityRenderer<PetrifiedEntity> {
 
     private final Map<String, EntityModel> modelMap = new HashMap();
