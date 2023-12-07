@@ -1,6 +1,7 @@
 # Dr Stone Mod
 In this mod I have aimed to make a recreation of various items and tools from the popular anime/manga dr stone written by Riichiro Inagaki and illustrated by the South Korean artist Boichi and animated by TMS entertainment.
-This mod is currently a work in progress.
+This mod is fan made and not affiliated with the official creators.
+this is still a work in progress mod.
 
 # So far:
 I have gotten a basic petrification system working allowing you to petrify any living entity. still need to get to undoing petrification and some other things such as better art and other effects.
