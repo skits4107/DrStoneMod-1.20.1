@@ -17,13 +17,13 @@ import net.skits4107.drstonemod.entity.ModEntities;
 import org.jetbrains.annotations.NotNull;
 
 
-//significant amounts of code have been reused from the Ice and Fire mod's StoneStatue class (created by Raptorfarian and Alexthe666) under the LGPL license..
+//significant amounts of code have been reused from the Ice and Fire mod's StoneStatue class (created by Raptorfarian and Alexthe666) under the LGPL license.
 //I feel the need to give credit to the creators of Ice and Fire for it
-// as I really only changed some names and removed the cracked Synched entity data as I deemed it unneeded for this entity.
-//I also do not implement the IBlacklistedFromStatues Interface that exists in ice and fire mod.
+// as I really only changed some names and removed the cracked Synched entity data and associated methods as I deemed it unneeded for my entity.
+//I also do not implement or use the IBlacklistedFromStatues Interface that exists in ice and fire mod.
 public class PetrifiedEntity extends LivingEntity {
 
-    //these are used to store data for the entity, specifcally about the petrfied entity
+    //these are used to store data for the entity, specifically about the petrified entity
     private static final EntityDataAccessor<String> TRAPPED_ENTITY_TYPE = SynchedEntityData.defineId(PetrifiedEntity.class, EntityDataSerializers.STRING);
     private static final EntityDataAccessor<CompoundTag> TRAPPED_ENTITY_DATA = SynchedEntityData.defineId(PetrifiedEntity.class, EntityDataSerializers.COMPOUND_TAG);
     private static final EntityDataAccessor<Float> TRAPPED_ENTITY_WIDTH = SynchedEntityData.defineId(PetrifiedEntity.class, EntityDataSerializers.FLOAT);
@@ -173,6 +173,11 @@ public class PetrifiedEntity extends LivingEntity {
     @Override
     public HumanoidArm getMainArm() {
         return HumanoidArm.RIGHT;
+    }
+
+    @Override
+    public boolean canBreatheUnderwater() {
+        return true;
     }
 
 
