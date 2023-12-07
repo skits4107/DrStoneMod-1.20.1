@@ -16,6 +16,9 @@ import net.skits4107.drstonemod.DrStoneMod;
 import net.skits4107.drstonemod.entity.ModEntities;
 import org.jetbrains.annotations.NotNull;
 
+
+//significant amounts of code have been reused from the Ice and Fire mod's StoneStatue class.
+//I feel the need to give credit to the creators of Ice and Fire for it as i really only changed some names.
 public class PetrifiedEntity extends LivingEntity {
 
     //these are used to store data for the entity, specifcally about the petrfied entity
@@ -148,6 +151,7 @@ public class PetrifiedEntity extends LivingEntity {
             this.setTrappedTag(tag.getCompound("PetrifiedEntityTag"));
         }
     }
+
 
     @Override
     public Iterable<ItemStack> getArmorSlots() {

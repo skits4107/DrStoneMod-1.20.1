@@ -30,7 +30,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-
+//significant amounts of code have been reused from the Ice and Fire mod's RenderStoneStatue class.
+// there are various differences within the renderer but a lot is the same.
 public class PetrifiedEntityRenderer extends EntityRenderer<PetrifiedEntity> {
 
     private final Map<String, EntityModel> modelMap = new HashMap();
@@ -47,7 +48,6 @@ public class PetrifiedEntityRenderer extends EntityRenderer<PetrifiedEntity> {
     @Override
     public ResourceLocation getTextureLocation(PetrifiedEntity pEntity) {
         return new ResourceLocation("minecraft:textures/block/cobblestone.png");
-        //return TextureAtlas.LOCATION_BLOCKS;
     }
 
 
