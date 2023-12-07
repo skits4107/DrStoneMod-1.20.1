@@ -118,8 +118,6 @@ public class PetrifiedEntity extends LivingEntity {
 
 
 
-
-
     @Override
     public void addAdditionalSaveData(@NotNull CompoundTag tag) {
         super.addAdditionalSaveData(tag);
