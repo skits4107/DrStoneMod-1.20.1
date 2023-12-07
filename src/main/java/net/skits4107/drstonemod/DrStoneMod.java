@@ -56,8 +56,10 @@ public class DrStoneMod
     // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event)
     {
-        if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS)
+        if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
             event.accept(ModItems.PETRIFICATION_DEVICE_ITEM);
+            event.accept(ModItems.REVIVAL_FLUID);
+        }
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
@@ -77,6 +79,7 @@ public class DrStoneMod
         {
             // Some client setup code
             EntityRenderers.register(ModEntities.THROWN_DEVICE.get(), ThrownItemRenderer::new);
+            EntityRenderers.register(ModEntities.THROWN_REVIVAL_FLUID.get(), ThrownItemRenderer::new);
             EntityRenderers.register(ModEntities.PETRIFIED_ENTITY.get(), PetrifiedEntityRenderer::new);
         }
     }
