@@ -32,6 +32,7 @@ import java.util.Map;
 
 //significant amounts of code have been reused from the Ice and Fire mod's RenderStoneStatue class.
 // there are various differences within the renderer but a lot is the same.
+//there are comments further elaborating on modifications
 public class PetrifiedEntityRenderer extends EntityRenderer<PetrifiedEntity> {
 
     private final Map<String, EntityModel> modelMap = new HashMap();
@@ -44,10 +45,11 @@ public class PetrifiedEntityRenderer extends EntityRenderer<PetrifiedEntity> {
         super(pContext);
         this.context = pContext;
     }
-
+    //i removed the preRenderCallback from the original ice and fire code
     @Override
     public ResourceLocation getTextureLocation(PetrifiedEntity pEntity) {
         return new ResourceLocation("minecraft:textures/block/cobblestone.png");
+        //changed what resource location I was returning.
     }
 
 
@@ -96,6 +98,7 @@ public class PetrifiedEntityRenderer extends EntityRenderer<PetrifiedEntity> {
             fakeEntity = this.hollowEntityMap.get(entityIn.getTrappedEntityTypeString());
         }
 
+        //From here on I do things somewhat differently from the original ice and fire mod
         RenderType tex = model.renderType(new ResourceLocation("minecraft:textures/block/cobblestone.png"));
         VertexConsumer ivertexbuilder = bufferIn.getBuffer(tex);
 
@@ -104,16 +107,16 @@ public class PetrifiedEntityRenderer extends EntityRenderer<PetrifiedEntity> {
 
         matrixStackIn.scale(entityIn.getScale(), entityIn.getScale(), entityIn.getScale());
         matrixStackIn.translate(0, 1.5F, 0);
+
         matrixStackIn.mulPose(new Quaternionf().fromAxisAngleDeg(1.0F, 0.0F, 0.0F, 180F));
+
         float yaw = entityIn.yRotO + (entityIn.getYRot() - entityIn.yRotO) * partialTicks;
         matrixStackIn.mulPose(new Quaternionf().fromAxisAngleDeg(0.0F, 1.0F, 0.0F, yaw));
-        boolean shouldSit = entityIn.isPassenger() && (entityIn.getVehicle() != null && entityIn.getVehicle().shouldRiderSit());
+
         model.young = entityIn.isBaby();
-        model.riding = shouldSit;
+        model.riding = entityIn.isPassenger() && (entityIn.getVehicle() != null && entityIn.getVehicle().shouldRiderSit());
         model.attackTime = entityIn.getAttackAnim(partialTicks);
         if (fakeEntity != null){
-
-
             model.setupAnim(fakeEntity, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F);
 
         }
@@ -122,8 +125,6 @@ public class PetrifiedEntityRenderer extends EntityRenderer<PetrifiedEntity> {
         matrixStackIn.popPose();
 
 
-
-        //super.render(entityIn, entityYaw, partialTicks, matrixStackIn, bufferIn, packedLightIn);
 
     }
 

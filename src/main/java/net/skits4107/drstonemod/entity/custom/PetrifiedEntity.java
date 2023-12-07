@@ -18,7 +18,9 @@ import org.jetbrains.annotations.NotNull;
 
 
 //significant amounts of code have been reused from the Ice and Fire mod's StoneStatue class.
-//I feel the need to give credit to the creators of Ice and Fire for it as i really only changed some names.
+//I feel the need to give credit to the creators of Ice and Fire for it
+// as I really only changed some names and removed the cracked data as I deemed it needed for this entity.
+//I also do not implement the IBlacklistedFromStatues Interface that exists in ice and fire mod.
 public class PetrifiedEntity extends LivingEntity {
 
     //these are used to store data for the entity, specifcally about the petrfied entity
