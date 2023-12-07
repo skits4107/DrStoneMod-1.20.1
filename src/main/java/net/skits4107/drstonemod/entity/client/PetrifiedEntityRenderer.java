@@ -69,7 +69,7 @@ public class PetrifiedEntityRenderer extends EntityRenderer<PetrifiedEntity> {
             if (renderer != null) {
                 if (renderer instanceof LivingEntityRenderer<?, ?>) {
                     //this gets the model if it is a living entity, but it is only a shallow copy, meaning
-                    // it might occasionally play unwanted animations.
+                    // it might occasionally play unwanted animations but should still work every other way.
                     model = ((LivingEntityRenderer<?, ?>) renderer).getModel();
                     //the code for cloning the model below was not a part of the original ice and fire mod and
                     // was written by the creator of the dr stone mod (me). I do not know how good this code is,
@@ -94,7 +94,7 @@ public class PetrifiedEntityRenderer extends EntityRenderer<PetrifiedEntity> {
                         // Handle exceptions
                         e.printStackTrace();
                     }
-                    if (clonedModel != null){ //if we couldn't get a cloned model (perhaps a modded entity) then we just use the shallow copy.
+                    if (clonedModel != null){ //if we couldn't get a cloned model then we just use the shallow copy.
                         model = clonedModel;
                     }
                 }
