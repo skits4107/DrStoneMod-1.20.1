@@ -43,7 +43,7 @@ public class ThrownRevivalFluid extends ThrowableItemProjectile {
 
                 entityToRevive.absMoveTo(entity.getX(), entity.getY(), entity.getZ(), entity.getYRot(), entity.getXRot());
                 entityToRevive.setYBodyRot(entity.getYRot());
-                //TODO: try to use tags for slightly more dynamic petrification like checking if it was walking using motion tag
+
                 DrStoneMod.LOGGER.info(petrifiedEntity.getTrappedTag().getAllKeys().toString());
 
                 if (!level.isClientSide) {

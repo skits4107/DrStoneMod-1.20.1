@@ -5,6 +5,7 @@ import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
@@ -15,6 +16,9 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.skits4107.drstonemod.entity.ModEntities;
+import net.skits4107.drstonemod.entity.client.ModModelLayers;
+import net.skits4107.drstonemod.entity.client.PetrificationSpherRenderer;
+import net.skits4107.drstonemod.entity.client.PetrificationSphere;
 import net.skits4107.drstonemod.entity.client.PetrifiedEntityRenderer;
 import net.skits4107.drstonemod.item.ModItems;
 import org.slf4j.Logger;
@@ -81,6 +85,12 @@ public class DrStoneMod
             EntityRenderers.register(ModEntities.THROWN_DEVICE.get(), ThrownItemRenderer::new);
             EntityRenderers.register(ModEntities.THROWN_REVIVAL_FLUID.get(), ThrownItemRenderer::new);
             EntityRenderers.register(ModEntities.PETRIFIED_ENTITY.get(), PetrifiedEntityRenderer::new);
+            EntityRenderers.register(ModEntities.PETRIFICATION_SPHERE.get(), PetrificationSpherRenderer::new);
+        }
+
+        @SubscribeEvent
+        public static void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event){
+            event.registerLayerDefinition(ModModelLayers.PETRIFICATION_SPHERE_LAYER, PetrificationSphere::createBodyLayer);
         }
     }
 }

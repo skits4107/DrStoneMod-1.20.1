@@ -57,7 +57,7 @@ public class PetrifiedEntityRenderer extends EntityRenderer<PetrifiedEntity> {
     @Override
     public void render(PetrifiedEntity entityIn, float entityYaw, float partialTicks, @NotNull PoseStack matrixStackIn, @NotNull MultiBufferSource bufferIn, int packedLightIn) {
 
-        //default model is pig
+        //default model is pig. this is used in worse case scenario
         EntityModel model = new PigModel(context.bakeLayer(ModelLayers.PIG));
 
         //if there is model in cache

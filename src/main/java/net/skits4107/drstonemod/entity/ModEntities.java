@@ -11,6 +11,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.skits4107.drstonemod.DrStoneMod;
+import net.skits4107.drstonemod.entity.custom.PetrificationSphereEntity;
 import net.skits4107.drstonemod.entity.custom.PetrifiedEntity;
 import net.skits4107.drstonemod.entity.custom.ThrownPetrificationDeviceEntity;
 import net.skits4107.drstonemod.entity.custom.ThrownRevivalFluid;
@@ -30,6 +31,8 @@ public class ModEntities {
     public static final RegistryObject<EntityType<ThrownRevivalFluid>> THROWN_REVIVAL_FLUID = ENTITIES.register("thrown_revival_fluid", () -> EntityType.Builder.
                     <ThrownRevivalFluid>of(ThrownRevivalFluid::new, MobCategory.MISC).
             sized(0.5F,0.5F).build("thrown_revival_fluid"));
+
+    public static final RegistryObject<EntityType<PetrificationSphereEntity>> PETRIFICATION_SPHERE = registerEntity(EntityType.Builder.of(PetrificationSphereEntity::new, MobCategory.MISC).sized(0.5F, 0.5F), "petrification_sphere");
 
     private static final <T extends Entity> RegistryObject<EntityType<T>> registerEntity(EntityType.Builder<T> builder, String entityName) {
         return ENTITIES.register(entityName, () -> builder.build(entityName));
