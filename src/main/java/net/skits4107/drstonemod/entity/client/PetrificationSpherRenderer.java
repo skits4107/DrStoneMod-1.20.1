@@ -35,7 +35,13 @@ public class PetrificationSpherRenderer extends EntityRenderer<PetrificationSphe
         matrixStackIn.pushPose();
         RenderType tex = model.renderType(new ResourceLocation(DrStoneMod.MOD_ID, "textures/entity/pst.png"));
         VertexConsumer ivertexbuilder = bufferIn.getBuffer(tex);
+        float scale = entityIn.getScale();
+        matrixStackIn.scale(scale*1.8f, scale*1.8f, scale*1.8f);
+        // Translate down to keep the base at the same level
+        matrixStackIn.translate(0, -1, 0);
         model.renderToBuffer(matrixStackIn, ivertexbuilder, packedLightIn, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
         matrixStackIn.popPose();
     }
+
+
 }
