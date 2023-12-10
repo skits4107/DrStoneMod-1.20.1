@@ -10,13 +10,17 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
+import net.skits4107.drstonemod.DrStoneMod;
+import net.skits4107.drstonemod.entity.ModEntities;
 
 import java.util.List;
 
 public class PetrificationSphereEntity extends Entity {
 
     private float scale = 1f;
-    private float timer = 20f*10f;
+    private float timer = 20f*50f;
+
+
     public PetrificationSphereEntity(EntityType<?> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
     }
@@ -45,6 +49,8 @@ public class PetrificationSphereEntity extends Entity {
     public void tick() {
         if (this.timer <= 0){
             this.remove(RemovalReason.DISCARDED);
+            DrStoneMod.LOGGER.info("Despawned petrification sphere");
+            DrStoneMod.LOGGER.info(String.valueOf(this.scale));
             return;
         }
         super.tick();
@@ -72,15 +78,24 @@ public class PetrificationSphereEntity extends Entity {
 
     }
 
+    public static PetrificationSphereEntity create(float meters, ThrownPetrificationDeviceEntity parent){
+        PetrificationSphereEntity sphere = ModEntities.PETRIFICATION_SPHERE.get().create(parent.level());
+        sphere.timer = (meters/2)*20;
+        return sphere;
+    }
 
 
     public float getScale(){
         return this.scale;
     }
 
+    @Override
+    public boolean shouldRenderAtSqrDistance(double pDistance) {
+        return true;
+    }
 
-
-
-
-
+    @Override
+    public boolean shouldRender(double pX, double pY, double pZ) {
+        return true;
+    }
 }

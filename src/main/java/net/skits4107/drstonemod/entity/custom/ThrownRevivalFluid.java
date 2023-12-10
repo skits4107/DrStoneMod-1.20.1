@@ -39,10 +39,11 @@ public class ThrownRevivalFluid extends ThrowableItemProjectile {
             if (entity != null){
                 Level level = entity.level();
                 PetrifiedEntity petrifiedEntity = (PetrifiedEntity)entity;
-                Entity entityToRevive = petrifiedEntity.getTrappedEntityType().create(level);
-
+                LivingEntity entityToRevive = (LivingEntity)petrifiedEntity.getTrappedEntityType().create(level);
+                entityToRevive.load(petrifiedEntity.getTrappedTag());
                 entityToRevive.absMoveTo(entity.getX(), entity.getY(), entity.getZ(), entity.getYRot(), entity.getXRot());
                 entityToRevive.setYBodyRot(entity.getYRot());
+                entityToRevive.heal(entityToRevive.getMaxHealth());
 
                 DrStoneMod.LOGGER.info(petrifiedEntity.getTrappedTag().getAllKeys().toString());
 

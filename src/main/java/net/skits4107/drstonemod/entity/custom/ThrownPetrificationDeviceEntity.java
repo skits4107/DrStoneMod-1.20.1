@@ -9,12 +9,17 @@ import net.minecraft.world.entity.projectile.ThrowableProjectile;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
+import net.minecraft.world.phys.Vec3;
+import net.skits4107.drstonemod.DrStoneMod;
 import net.skits4107.drstonemod.entity.ModEntities;
 import net.skits4107.drstonemod.item.ModItems;
 
 public class ThrownPetrificationDeviceEntity extends ThrowableItemProjectile {
 
+    private float timer = 1*20;
+    private float meters = 100;
 
+    private boolean cnaPetrify = true;
     public ThrownPetrificationDeviceEntity(EntityType<? extends ThrowableItemProjectile> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
     }
@@ -33,6 +38,7 @@ public class ThrownPetrificationDeviceEntity extends ThrowableItemProjectile {
         return ModItems.PETRIFICATION_DEVICE_ITEM.get();
     }
 
+    /*
     @Override
     protected void onHitEntity(EntityHitResult pResult) {
         Entity entity = pResult.getEntity();
@@ -51,7 +57,23 @@ public class ThrownPetrificationDeviceEntity extends ThrowableItemProjectile {
             }
         }
         //super.onHitEntity(pResult);
+    } */
+
+    @Override
+    public void tick() {
+        if (this.timer <= 0 && this.cnaPetrify){
+            if (!this.level().isClientSide) {
+                this.setDeltaMovement(new Vec3(0,0,0));
+                this.cnaPetrify = false;
+                this.timer = 1000;
+                PetrificationSphereEntity sphere = PetrificationSphereEntity.create(this.meters, this);
+                sphere.absMoveTo(this.getX(), this.getY(), this.getZ());
+                this.level().addFreshEntity(sphere);
+                DrStoneMod.LOGGER.info("Created sphere");
+            }
+        }
+
+        super.tick();
+        this.timer -= 1;
     }
-
-
 }
