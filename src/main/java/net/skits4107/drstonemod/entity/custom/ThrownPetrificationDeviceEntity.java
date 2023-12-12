@@ -8,6 +8,7 @@ import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
 import net.minecraft.world.entity.projectile.ThrowableProjectile;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.Vec3;
 import net.skits4107.drstonemod.DrStoneMod;
@@ -59,6 +60,8 @@ public class ThrownPetrificationDeviceEntity extends ThrowableItemProjectile {
         //super.onHitEntity(pResult);
     } */
 
+
+
     @Override
     public void tick() {
         if (this.timer <= 0 && this.cnaPetrify){
@@ -75,5 +78,13 @@ public class ThrownPetrificationDeviceEntity extends ThrowableItemProjectile {
 
         super.tick();
         this.timer -= 1;
+    }
+
+    @Override
+    protected void onHitBlock(BlockHitResult pResult) {
+        super.onHitBlock(pResult);
+        if(!this.level().isClientSide){
+            this.remove(RemovalReason.DISCARDED);
+        }
     }
 }

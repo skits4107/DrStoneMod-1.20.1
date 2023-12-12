@@ -7,6 +7,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.skits4107.drstonemod.DrStoneMod;
 import net.skits4107.drstonemod.entity.ModEntities;
@@ -54,5 +55,13 @@ public class ThrownRevivalFluid extends ThrowableItemProjectile {
             }
         }
         //super.onHitEntity(pResult);
+    }
+
+    @Override
+    protected void onHitBlock(BlockHitResult pResult) {
+        super.onHitBlock(pResult);
+        if(!this.level().isClientSide){
+            this.remove(RemovalReason.DISCARDED);
+        }
     }
 }
