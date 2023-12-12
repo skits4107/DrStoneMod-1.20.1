@@ -1,6 +1,9 @@
 package net.skits4107.drstonemod;
 
 import com.mojang.logging.LogUtils;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -50,6 +53,7 @@ public class DrStoneMod
         modEventBus.addListener(this::addCreative);
 
 
+
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)
@@ -74,6 +78,8 @@ public class DrStoneMod
        ;
     }
 
+
+
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
     @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static class ClientModEvents
@@ -82,10 +88,11 @@ public class DrStoneMod
         public static void onClientSetup(FMLClientSetupEvent event)
         {
             // Some client setup code
+            EntityRenderers.register(ModEntities.PETRIFICATION_SPHERE.get(), PetrificationSpherRenderer::new);
             EntityRenderers.register(ModEntities.THROWN_DEVICE.get(), ThrownItemRenderer::new);
             EntityRenderers.register(ModEntities.THROWN_REVIVAL_FLUID.get(), ThrownItemRenderer::new);
             EntityRenderers.register(ModEntities.PETRIFIED_ENTITY.get(), PetrifiedEntityRenderer::new);
-            EntityRenderers.register(ModEntities.PETRIFICATION_SPHERE.get(), PetrificationSpherRenderer::new);
+
         }
 
         @SubscribeEvent

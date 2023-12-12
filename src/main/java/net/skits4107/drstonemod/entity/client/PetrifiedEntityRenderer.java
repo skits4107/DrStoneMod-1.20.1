@@ -11,6 +11,7 @@ import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.culling.Frustum;
 import net.minecraft.client.renderer.entity.*;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 
@@ -155,7 +156,8 @@ public class PetrifiedEntityRenderer extends EntityRenderer<PetrifiedEntity> {
 
     }
 
-
-
-
+    @Override
+    public boolean shouldRender(PetrifiedEntity pLivingEntity, Frustum pCamera, double pCamX, double pCamY, double pCamZ) {
+        return true;
+    }
 }

@@ -2,6 +2,9 @@ package net.skits4107.drstonemod.entity.custom;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -17,8 +20,10 @@ import java.util.List;
 
 public class PetrificationSphereEntity extends Entity {
 
+
+
     private float scale = 1f;
-    private float timer = 20f*50f;
+    private float timer = 20f*50f; //default is 50 meters. 20 ticks a second.
 
 
     public PetrificationSphereEntity(EntityType<?> pEntityType, Level pLevel) {
@@ -54,7 +59,7 @@ public class PetrificationSphereEntity extends Entity {
             return;
         }
         super.tick();
-        AABB searchArea = this.getBoundingBox().inflate(0.05); //increase by one every second (20 ticks a second)
+        AABB searchArea = this.getBoundingBox().inflate(0.05); //increase radius by one every second (20 ticks a second)
         List<LivingEntity> nearbyEntities = this.level().getEntitiesOfClass(LivingEntity.class, searchArea);
 
         for (LivingEntity entity : nearbyEntities) {
@@ -72,9 +77,9 @@ public class PetrificationSphereEntity extends Entity {
             }
         }
         this.setBoundingBox(searchArea); //expand the sphere
-        this.scale += 0.05;
+        this.scale += 0.05; //increase radius by one every second (20 ticks a second)
         this.timer -= 1;
-        //this.moveTo(new Vec3(this.getX(),this.getY()+0.05,this.getZ()));
+
 
     }
 
@@ -98,4 +103,6 @@ public class PetrificationSphereEntity extends Entity {
     public boolean shouldRender(double pX, double pY, double pZ) {
         return true;
     }
+
+
 }

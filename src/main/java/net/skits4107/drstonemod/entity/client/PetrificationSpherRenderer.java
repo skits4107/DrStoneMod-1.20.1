@@ -1,5 +1,7 @@
 package net.skits4107.drstonemod.entity.client;
 
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.model.EntityModel;
@@ -14,6 +16,7 @@ import net.skits4107.drstonemod.DrStoneMod;
 import net.skits4107.drstonemod.entity.custom.PetrificationSphereEntity;
 import net.skits4107.drstonemod.entity.custom.PetrifiedEntity;
 import org.jetbrains.annotations.NotNull;
+import org.lwjgl.opengl.GL11;
 
 public class PetrificationSpherRenderer extends EntityRenderer<PetrificationSphereEntity> {
 
@@ -22,6 +25,7 @@ public class PetrificationSpherRenderer extends EntityRenderer<PetrificationSphe
     public PetrificationSpherRenderer(EntityRendererProvider.Context pContext) {
         super(pContext);
         this.context = pContext;
+
     }
 
     @Override
@@ -34,13 +38,23 @@ public class PetrificationSpherRenderer extends EntityRenderer<PetrificationSphe
         PetrificationSphere model = new PetrificationSphere<>(context.bakeLayer(ModModelLayers.PETRIFICATION_SPHERE_LAYER));
 
         matrixStackIn.pushPose();
-        RenderType tex = model.renderType(new ResourceLocation(DrStoneMod.MOD_ID, "textures/entity/pst.png"));
+
+        //ResourceLocation texture = new ResourceLocation(DrStoneMod.MOD_ID, "textures/entity/pst.png");
+        //RenderSystem.setShaderTexture(0, texture);
+        // Use the translucent RenderType
+        //RenderType tex = RenderType.entityCutoutNoCull(new ResourceLocation(DrStoneMod.MOD_ID, "textures/entity/pst.png"));
+        RenderType tex =  RenderType.entityTranslucentEmissive(new ResourceLocation(DrStoneMod.MOD_ID, "textures/entity/pst.png"));//RenderType.translucent();
+
         VertexConsumer ivertexbuilder = bufferIn.getBuffer(tex);
+
         float scale = entityIn.getScale();
-        matrixStackIn.scale(scale*1.8f, scale*1.8f, scale*1.8f);
+        matrixStackIn.scale(scale*3.2f, scale*3.2f, scale*3.2f);
+
         // Translate down to keep the base at the same level
-        matrixStackIn.translate(0, -1, 0);
+        matrixStackIn.translate(0, -1.1, 0);
+
         model.renderToBuffer(matrixStackIn, ivertexbuilder, packedLightIn, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
+
         matrixStackIn.popPose();
     }
 

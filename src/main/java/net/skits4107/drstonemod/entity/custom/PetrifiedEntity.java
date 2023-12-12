@@ -180,5 +180,8 @@ public class PetrifiedEntity extends LivingEntity {
         return true;
     }
 
-
+    @Override
+    public boolean shouldRender(double pX, double pY, double pZ) {
+        return true;
+    }
 }
