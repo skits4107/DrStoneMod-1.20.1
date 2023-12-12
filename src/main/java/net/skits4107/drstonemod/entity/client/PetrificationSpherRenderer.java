@@ -47,7 +47,7 @@ public class PetrificationSpherRenderer extends EntityRenderer<PetrificationSphe
 
         VertexConsumer ivertexbuilder = bufferIn.getBuffer(tex);
 
-        float scale = entityIn.getScale();
+        float scale = (float)entityIn.getScale();
         matrixStackIn.scale(scale*3.2f, scale*3.2f, scale*3.2f);
 
         // Translate down to keep the base at the same level

@@ -17,8 +17,8 @@ import net.skits4107.drstonemod.item.ModItems;
 
 public class ThrownPetrificationDeviceEntity extends ThrowableItemProjectile {
 
-    private float timer = 1*20;
-    private float meters = 100;
+    private double timer = 1*20;
+    private double meters = 100;
 
     private boolean cnaPetrify = true;
     public ThrownPetrificationDeviceEntity(EntityType<? extends ThrowableItemProjectile> pEntityType, Level pLevel) {
@@ -37,6 +37,20 @@ public class ThrownPetrificationDeviceEntity extends ThrowableItemProjectile {
     @Override
     protected Item getDefaultItem() {
         return ModItems.PETRIFICATION_DEVICE_ITEM.get();
+    }
+
+    public void setTimer(double timer){
+        this.timer = timer;
+    }
+    public void setMeters(double meters){
+        this.meters = meters;
+    }
+
+    public double getTimer(){
+        return this.timer;
+    }
+    public double getMeters(){
+        return this.meters;
     }
 
     /*
@@ -69,7 +83,7 @@ public class ThrownPetrificationDeviceEntity extends ThrowableItemProjectile {
                 this.setDeltaMovement(new Vec3(0,0,0));
                 this.cnaPetrify = false;
                 this.timer = 1000;
-                PetrificationSphereEntity sphere = PetrificationSphereEntity.create(this.meters, this);
+                PetrificationSphereEntity sphere = PetrificationSphereEntity.create(this.meters, this.level());
                 sphere.absMoveTo(this.getX(), this.getY(), this.getZ());
                 this.level().addFreshEntity(sphere);
                 DrStoneMod.LOGGER.info("Created sphere");

@@ -22,8 +22,8 @@ public class PetrificationSphereEntity extends Entity {
 
 
 
-    private float scale = 1f;
-    private float timer = 20f*50f; //default is 50 meters. 20 ticks a second.
+    private double scale = 1f;
+    private double timer = 20f*50f; //default is 50 meters. 20 ticks a second.
 
 
     public PetrificationSphereEntity(EntityType<?> pEntityType, Level pLevel) {
@@ -83,14 +83,14 @@ public class PetrificationSphereEntity extends Entity {
 
     }
 
-    public static PetrificationSphereEntity create(float meters, ThrownPetrificationDeviceEntity parent){
-        PetrificationSphereEntity sphere = ModEntities.PETRIFICATION_SPHERE.get().create(parent.level());
+    public static PetrificationSphereEntity create(double meters, Level level){
+        PetrificationSphereEntity sphere = ModEntities.PETRIFICATION_SPHERE.get().create(level);
         sphere.timer = (meters/2)*20;
         return sphere;
     }
 
 
-    public float getScale(){
+    public double getScale(){
         return this.scale;
     }
 

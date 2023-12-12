@@ -31,7 +31,8 @@ public class ModEvents {
                 int index = player.getInventory().findSlotMatchingItem(ModItems.PETRIFICATION_DEVICE_ITEM.get().getDefaultInstance());
                 ItemStack item = player.getInventory().getItem(index);
                 PetrificationItem petrificationItem = (PetrificationItem) item.getItem();
-                //TODO: set the petrification item values once the fields are made and used
+                petrificationItem.setTimer(timing);
+                petrificationItem.setMeters(meters);
                 player.displayClientMessage(Component.literal("Activating in: "+parts[1]+" seconds with radius: "+parts[0]+" meters"), true);
             }
         }
