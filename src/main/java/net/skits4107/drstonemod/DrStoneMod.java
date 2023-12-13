@@ -24,6 +24,7 @@ import net.skits4107.drstonemod.entity.client.PetrificationSpherRenderer;
 import net.skits4107.drstonemod.entity.client.PetrificationSphere;
 import net.skits4107.drstonemod.entity.client.PetrifiedEntityRenderer;
 import net.skits4107.drstonemod.item.ModItems;
+import net.skits4107.drstonemod.loot.ModLootModifiers;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -45,6 +46,7 @@ public class DrStoneMod
         modEventBus.addListener(this::commonSetup);
         ModItems.register(modEventBus);
         ModEntities.register(modEventBus);
+        ModLootModifiers.register(modEventBus);
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
