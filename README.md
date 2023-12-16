@@ -16,9 +16,7 @@ Revival fluid:
   this can revive petrfied entities, just throw it at them.
 
 # known bugs:
-- occasionally the countdown doesnt work well for petrification item in the inventory (should work fine if thrown)
-- if the item in inventory reaches countdown as the item is thrown. two petrifcation spheres may be made
-- countdown in on petrificatio ndevice in the inventory is not specific to an item and aplied to all in the inventory, if the petrification item is removed from invetory the countdown pauses and resumed when another one enters the inventory
+- countdown in on petrification device in the inventory is not specific to an item and aplied inventory wide, if the petrification item(s) is removed from invetory the countdown pauses and resumed when another one enters the inventory
 
   I do plan to address these issues soon.
 
