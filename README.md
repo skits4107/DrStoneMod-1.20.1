@@ -5,15 +5,22 @@ this is still a work in progress mod.
 
 # So far:
 Petrification device Item: 
+
   this item can be thrown or kept inventory
   takes input from chat in the format of "meters,seconds" replace the words with the wanted values.
   once the countdown is reached, it will create a petrification sphere of the desired size.
 
 Petrification sphere:
+
   this is an expanding sphere of green light that petrifies entities within it and touching it.
 
 Revival fluid:
+
   this can revive petrfied entities, just throw it at them.
+
+Guano:
+
+  bat poop. right now it doesnt spawn naturaally. soon will spawn in caves
 
 # known bugs:
 - countdown in on petrification device in the inventory is not specific to an item and aplied inventory wide, if the petrification item(s) is removed from invetory the countdown pauses and resumed when another one enters the inventory
@@ -28,6 +35,8 @@ Revival fluid:
   - add a way to get nitric acid and alcohol for crafting revival fluid.
   - add platinum ore (part of getting nitric acid later on).
   - add science stuff.
+  - make guano spawn naturally in cave.
+  - make katana.
 
 # Credits
 I would like to acknowledge the contributions of Raptorfarian and Alexthe666, the creators of the Ice and Fire mod. Their work has influenced the development of this project. Specifically, 
