@@ -16,6 +16,8 @@ public class ModItems {
 
     public static RegistryObject<Item> REVIVAL_FLUID = ITEMS.register("revival_fluid", ()->new RevivalFluid(new Item.Properties()));
 
+    public static RegistryObject<Item> NITRIC_ACID = ITEMS.register("nitric_acid", ()-> new Item(new Item.Properties()));
+
     public static void register(IEventBus bus){
         ITEMS.register(bus);
     }

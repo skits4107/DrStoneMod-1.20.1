@@ -1,5 +1,6 @@
 {
   "item.drstonemod.petrification_device" : "Petrification Device",
   "item.drstonemod.revival_fluid" : "Revival Fluid",
-  "block.drstonemod.guano": "Guano"
+  "block.drstonemod.guano": "Guano",
+  "item.drstonemod.nitric_acid": "Nitric Acid"
 }

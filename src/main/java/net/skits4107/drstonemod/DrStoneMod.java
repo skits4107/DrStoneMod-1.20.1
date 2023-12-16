@@ -72,8 +72,11 @@ public class DrStoneMod
             event.accept(ModItems.PETRIFICATION_DEVICE_ITEM);
             event.accept(ModItems.REVIVAL_FLUID);
         }
-        if (event.getTabKey() == CreativeModeTabs.NATURAL_BLOCKS) {
+        else if (event.getTabKey() == CreativeModeTabs.NATURAL_BLOCKS) {
             event.accept(ModBlocks.GUANO);
+        }
+        else if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
+            event.accept(ModItems.NITRIC_ACID);
         }
     }
 
