@@ -1,5 +1,9 @@
 package net.skits4107.drstonemod.entity.custom;
 
+import net.minecraft.client.particle.ParticleProvider;
+import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -39,6 +43,7 @@ public class ThrownRevivalFluid extends ThrowableItemProjectile {
         if (entity instanceof PetrifiedEntity){
             if (entity != null){
                 Level level = entity.level();
+
                 PetrifiedEntity petrifiedEntity = (PetrifiedEntity)entity;
                 LivingEntity entityToRevive = (LivingEntity)petrifiedEntity.getTrappedEntityType().create(level);
                 entityToRevive.load(petrifiedEntity.getTrappedTag());
@@ -47,10 +52,10 @@ public class ThrownRevivalFluid extends ThrowableItemProjectile {
                 entityToRevive.heal(entityToRevive.getMaxHealth());
 
                 DrStoneMod.LOGGER.info(petrifiedEntity.getTrappedTag().getAllKeys().toString());
-
                 if (!level.isClientSide) {
                     entity.remove(Entity.RemovalReason.KILLED);
                     level.addFreshEntity(entityToRevive);
+                    ((ServerLevel) level).sendParticles(ParticleTypes.LANDING_HONEY, entity.getX() + .5, entity.getY() + 1.5, entity.getZ() + .5, 20, random.nextFloat(), random.nextFloat(), random.nextFloat(), 0.15);
                 }
             }
         }
@@ -62,6 +67,7 @@ public class ThrownRevivalFluid extends ThrowableItemProjectile {
         super.onHitBlock(pResult);
         if(!this.level().isClientSide){
             this.remove(RemovalReason.DISCARDED);
+            ((ServerLevel) this.level()).sendParticles(ParticleTypes.LANDING_HONEY, this.getX() + .5, this.getY() + 1.5, this.getZ() + .5, 20, random.nextFloat(), random.nextFloat(), random.nextFloat(), 0.15);
         }
     }
 }

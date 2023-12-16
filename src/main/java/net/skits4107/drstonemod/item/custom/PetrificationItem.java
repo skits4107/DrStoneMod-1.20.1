@@ -109,4 +109,15 @@ public class PetrificationItem extends Item {
         return this.meters;
     }
 
+    @Override
+    public boolean isFoil(ItemStack pStack) {
+        if (this.timer >=0){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    
 }

@@ -18,6 +18,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.skits4107.drstonemod.block.ModBlocks;
 import net.skits4107.drstonemod.entity.ModEntities;
 import net.skits4107.drstonemod.entity.client.ModModelLayers;
 import net.skits4107.drstonemod.entity.client.PetrificationSpherRenderer;
@@ -47,6 +48,7 @@ public class DrStoneMod
         ModItems.register(modEventBus);
         ModEntities.register(modEventBus);
         ModLootModifiers.register(modEventBus);
+        ModBlocks.register(modEventBus);
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
@@ -69,6 +71,9 @@ public class DrStoneMod
         if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
             event.accept(ModItems.PETRIFICATION_DEVICE_ITEM);
             event.accept(ModItems.REVIVAL_FLUID);
+        }
+        if (event.getTabKey() == CreativeModeTabs.NATURAL_BLOCKS) {
+            event.accept(ModBlocks.GUANO);
         }
     }
 

@@ -12,7 +12,7 @@ import net.skits4107.drstonemod.item.custom.RevivalFluid;
 public class ModItems {
     public static DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, DrStoneMod.MOD_ID);
 
-    public static RegistryObject<Item> PETRIFICATION_DEVICE_ITEM = ITEMS.register("petrification_device", ()->new PetrificationItem(new Item.Properties()));
+    public static RegistryObject<Item> PETRIFICATION_DEVICE_ITEM = ITEMS.register("petrification_device", ()->new PetrificationItem(new Item.Properties().stacksTo(1)));
 
     public static RegistryObject<Item> REVIVAL_FLUID = ITEMS.register("revival_fluid", ()->new RevivalFluid(new Item.Properties()));
 
