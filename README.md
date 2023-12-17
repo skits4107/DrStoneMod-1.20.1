@@ -4,27 +4,35 @@ This mod is fan made and not affiliated with the official creators.
 this is still a work in progress mod.
 
 # So far:
-Petrification device Item: 
+**Petrification device Item:**
 
   this item can be thrown or kept inventory
   takes input from chat in the format of "meters,seconds" replace the words with the wanted values.
   once the countdown is reached, it will create a petrification sphere of the desired size.
 
-Petrification sphere:
+**Petrification sphere:**
 
   this is an expanding sphere of green light that petrifies entities within it and touching it.
 
-Revival fluid:
+**Revival fluid:**
 
   this can revive petrfied entities, just throw it at them.
 
-Guano:
+**Guano:**
 
   bat poop. right now it doesnt spawn naturaally. soon will spawn in caves
 
-Nitric Acid:
+**Nitric Acid:**
 
-  Nitric acid. doesnt do anythin yet but will be used in the crafting of revival fluid. nitric acid is crafted from a glass bottle and guano
+  Nitric acid. doesnt do anything yet but will be used in the crafting of revival fluid. nitric acid is crafted from a glass bottle and guano
+
+**Fermentation block**
+
+  you can put sweet berries into the fermentation block and once filled up you can jump on it to crush the berries and the nafter a long time it will turn to wine which you can collect with a glass bottle.
+
+**wine**
+
+  an item that will be used to craft concentrated alcohol to make revival fluid, this hasnt been done yet. it will also be drinkable in the future but ist right now.
 
 # known bugs:
 - countdown in on petrification device in the inventory is not specific to an item and aplied inventory wide, if the petrification item(s) is removed from invetory the countdown pauses and resumed when another one enters the inventory
