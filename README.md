@@ -7,8 +7,8 @@ this is still a work in progress mod.
 **Petrification device Item:**
 
  - this item can be thrown or kept inventory
-  takes input from chat in the format of "meters,seconds" replace the words with the wanted values.
-  once the countdown is reached, it will create a petrification sphere of the desired size.
+  - takes input from chat in the format of "meters,seconds" replace the words with the wanted values.
+ -  once the countdown is reached, it will create a petrification sphere of the desired size.
 
 **Petrification sphere:**
 
