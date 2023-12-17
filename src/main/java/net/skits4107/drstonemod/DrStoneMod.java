@@ -71,12 +71,16 @@ public class DrStoneMod
         if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
             event.accept(ModItems.PETRIFICATION_DEVICE_ITEM);
             event.accept(ModItems.REVIVAL_FLUID);
+            event.accept(ModBlocks.FERMENTOR);
         }
         else if (event.getTabKey() == CreativeModeTabs.NATURAL_BLOCKS) {
             event.accept(ModBlocks.GUANO);
         }
         else if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
             event.accept(ModItems.NITRIC_ACID);
+        }
+        else if (event.getTabKey() == CreativeModeTabs.FOOD_AND_DRINKS){
+            event.accept(ModItems.WINE);
         }
     }
 

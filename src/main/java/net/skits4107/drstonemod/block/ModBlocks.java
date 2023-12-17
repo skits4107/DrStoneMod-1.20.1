@@ -10,6 +10,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.skits4107.drstonemod.DrStoneMod;
+import net.skits4107.drstonemod.block.custom.FermentorBlock;
 import net.skits4107.drstonemod.item.ModItems;
 
 import java.util.function.Supplier;
@@ -19,6 +20,7 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> GUANO = registerBlock("guano", ()-> new Block(BlockBehaviour.Properties.copy(Blocks.SLIME_BLOCK).requiresCorrectToolForDrops().noCollission()));
 
+    public static final RegistryObject<Block> FERMENTOR = registerBlock("fermentor", ()-> new FermentorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)));
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block){
         RegistryObject<T> toReturn = BLOCKS.register(name, block);

@@ -1,0 +1,18 @@
+{
+  "variants": {
+    "filled=0,crushed=0,wine=false": {"model":"drstonemod:block/fermentor_empty"},
+    "filled=1,crushed=0,wine=false": {"model":"drstonemod:block/fermentor_1"},
+    "filled=2,crushed=0,wine=false": {"model":"drstonemod:block/fermentor_2"},
+    "filled=3,crushed=0,wine=false": {"model":"drstonemod:block/fermentor_3"},
+    "filled=4,crushed=0,wine=false": {"model":"drstonemod:block/fermentor_4"},
+    "filled=5,crushed=0,wine=false": {"model":"drstonemod:block/fermentor_5"},
+    "filled=6,crushed=0,wine=false": {"model":"drstonemod:block/fermentor_6"},
+    "filled=7,crushed=0,wine=false": {"model":"drstonemod:block/fermentor_7"},
+    "filled=7,crushed=1,wine=false": {"model":"drstonemod:block/fermentor_crushed_1"},
+    "filled=7,crushed=2,wine=false": {"model":"drstonemod:block/fermentor_crushed_2"},
+    "filled=7,crushed=3,wine=false": {"model":"drstonemod:block/fermentor_crushed_3"},
+    "filled=7,crushed=4,wine=false": {"model":"drstonemod:block/fermentor_crushed_4"},
+    "filled=7,crushed=4,wine=true": {"model":"drstonemod:block/fermentor_wine"}
+  }
+
+}
