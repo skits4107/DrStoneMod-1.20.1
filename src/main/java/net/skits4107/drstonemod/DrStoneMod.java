@@ -78,6 +78,7 @@ public class DrStoneMod
         }
         else if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
             event.accept(ModItems.NITRIC_ACID);
+            event.accept(ModItems.DISTILLED_ALCOHOL);
         }
         else if (event.getTabKey() == CreativeModeTabs.FOOD_AND_DRINKS){
             event.accept(ModItems.WINE);

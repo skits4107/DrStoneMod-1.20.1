@@ -35,48 +35,55 @@ public class FermentorBlock extends Block {
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
-        pBuilder.add(FILLED); //registers property to block states
+        pBuilder.add(FILLED); //registers properties to block states
         pBuilder.add(CRUSHED);
         pBuilder.add(WINE);
     }
 
     @Override
     public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
-        DrStoneMod.LOGGER.info("use is called");
+        //if the player interacts with main hand and on server side
         if (!pLevel.isClientSide && pHand.equals(InteractionHand.MAIN_HAND)){
-            DrStoneMod.LOGGER.info("main hand interaction on server");
+            //if the player is holding sweet berries
             if (pPlayer.getItemInHand(InteractionHand.MAIN_HAND).is(Items.SWEET_BERRIES)){
-                DrStoneMod.LOGGER.info("should fill up");
+                //then check to see how filled it is. if it isn't filled fully then add berry to the block
                 int filled = pState.getValue(FILLED);
                 if (filled < MAX_FILL){
+                    //set the block state to fill a bit more
                     pLevel.setBlock(pPos, pState.setValue(FILLED, filled+1), 3);
-                    ItemStack itemstack = pPlayer.getItemInHand(InteractionHand.MAIN_HAND);
+                    //get a reference to the itemstack in the main hand which is a berry in this case
+                    ItemStack berries = pPlayer.getItemInHand(InteractionHand.MAIN_HAND);
                     if (!pPlayer.getAbilities().instabuild) {
-                        itemstack.shrink(1);
+                        berries.shrink(1); //removes one berry
                     }
+                    //return consume to indicate successful interaction
                     return InteractionResult.CONSUME;
                 }
-                //return InteractionResult.PASS;
+
             }
-            if (pPlayer.getItemInHand(InteractionHand.MAIN_HAND).is(Items.GLASS_BOTTLE)){
-                DrStoneMod.LOGGER.info("should get wine");
+            //if the item in main hand is a glass bottle
+            else if (pPlayer.getItemInHand(InteractionHand.MAIN_HAND).is(Items.GLASS_BOTTLE)){
                 int filled = pState.getValue(FILLED);
                 int crushed = pState.getValue(CRUSHED);
                 boolean wine = pState.getValue(WINE);
+                //check to see if the barrel has wine and can be collected
                 if (filled == MAX_FILL && crushed == MAX_CRUSH && wine){
+                    //set the block to default or empty
                     pLevel.setBlock(pPos, pState.setValue(WINE, false).setValue(CRUSHED, 0).setValue(FILLED, 0), 3);
-                    ItemStack itemstack = pPlayer.getItemInHand(InteractionHand.MAIN_HAND);
+                    //get the glass bottles item stack reference
+                    ItemStack bottles = pPlayer.getItemInHand(InteractionHand.MAIN_HAND);
                     if (!pPlayer.getAbilities().instabuild) {
-                        itemstack.shrink(1);
+                        bottles.shrink(1); //remove one glass bottle
                     }
+                    //give player the wine bottle
                     pPlayer.getInventory().add((new ItemStack(ModItems.WINE.get())));
+                    //indicate successful interaction
                     return InteractionResult.CONSUME;
                 }
             }
 
-            //int eaten = pState.getValue(EATEN);
-
         }
+        //indicate failed interaction
         return InteractionResult.PASS;
     }
 
@@ -84,6 +91,7 @@ public class FermentorBlock extends Block {
     public void fallOn(Level pLevel, BlockState pState, BlockPos pPos, Entity pEntity, float pFallDistance) {
         int crushed = pState.getValue(CRUSHED);
         int filled = pState.getValue(FILLED);
+        //if on server and it isnt fully crushed but is filled then increase the amount of crush when an entity falls on it
         if (!pLevel.isClientSide && crushed != MAX_CRUSH && filled==MAX_FILL){
             pLevel.setBlock(pPos, pState.setValue(CRUSHED, crushed+1), 3);
         }
@@ -99,6 +107,7 @@ public class FermentorBlock extends Block {
         int crushed = pState.getValue(CRUSHED);
         int filled = pState.getValue(FILLED);
         boolean wine = pState.getValue(WINE);
+        //if it is fully filled and crushed then there is  chance each random tick that it turns to wine.
         if (!pLevel.isClientSide && crushed == MAX_CRUSH && filled == MAX_FILL && !wine){
             float val = pRandom.nextFloat();
             if (val <= 0.05){

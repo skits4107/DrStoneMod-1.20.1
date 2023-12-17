@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "drstonemod:distilled_alcohol"
+    },
+    {
+      "item": "drstonemod:distilled_alcohol"
+    },
+    {
+      "item": "drstonemod:nitric_acid"
+    }
+  ],
+  "result": {
+    "item": "drstonemod:revival_fluid",
+    "count": 1
+  }
+}

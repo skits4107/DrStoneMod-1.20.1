@@ -15,11 +15,13 @@ public class ModItems {
 
     public static RegistryObject<Item> PETRIFICATION_DEVICE_ITEM = ITEMS.register("petrification_device", ()->new PetrificationItem(new Item.Properties().stacksTo(1)));
 
-    public static RegistryObject<Item> REVIVAL_FLUID = ITEMS.register("revival_fluid", ()->new RevivalFluid(new Item.Properties()));
+    public static RegistryObject<Item> REVIVAL_FLUID = ITEMS.register("revival_fluid", ()->new RevivalFluid(new Item.Properties().stacksTo(1)));
 
-    public static RegistryObject<Item> NITRIC_ACID = ITEMS.register("nitric_acid", ()-> new Item(new Item.Properties()));
+    public static RegistryObject<Item> NITRIC_ACID = ITEMS.register("nitric_acid", ()-> new Item(new Item.Properties().stacksTo(1)));
 
-    public static RegistryObject<Item> WINE = ITEMS.register("wine", () -> new Item(new Item.Properties()));
+    public static RegistryObject<Item> WINE = ITEMS.register("wine", () -> new Item(new Item.Properties().stacksTo(1)));
+
+    public static RegistryObject<Item> DISTILLED_ALCOHOL = ITEMS.register("distilled_alcohol", () -> new Item(new Item.Properties().stacksTo(1)));
 
     public static void register(IEventBus bus){
         ITEMS.register(bus);

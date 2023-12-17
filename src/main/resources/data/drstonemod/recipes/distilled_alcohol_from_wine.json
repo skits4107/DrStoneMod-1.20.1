@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 2000,
+  "experience": 0.75,
+  "ingredient": {
+    "item": "drstonemod:wine"
+  },
+  "result": "drstonemod:distilled_alcohol"
+}

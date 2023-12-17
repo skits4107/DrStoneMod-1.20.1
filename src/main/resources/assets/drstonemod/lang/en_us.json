@@ -4,5 +4,6 @@
   "block.drstonemod.guano": "Guano",
   "item.drstonemod.nitric_acid": "Nitric Acid",
   "block.drstonemod.fermentor": "Fermentation block",
-  "item.drstonemod.wine": "Wine"
+  "item.drstonemod.wine": "Wine",
+  "item.drstonemod.distilled_alcohol": "distilled alcohol"
 }
