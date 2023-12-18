@@ -96,7 +96,7 @@ public class PetrificationItem extends Item {
     }
 
     public void setTimer(double timer){
-        this.timer = timer*20;
+        this.timer = timer*40;
     }
     public void setMeters(double meters){
         this.meters = meters;

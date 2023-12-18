@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures":{
-    "layer0": "drstonemod:item/temporary_petrification_item_texture"
+    "layer0": "drstonemod:item/petrification_device"
   }
 }
