@@ -5,5 +5,6 @@
   "item.drstonemod.nitric_acid": "Nitric Acid",
   "block.drstonemod.fermentor": "Fermentation block",
   "item.drstonemod.wine": "Wine",
-  "item.drstonemod.distilled_alcohol": "distilled alcohol"
+  "item.drstonemod.distilled_alcohol": "distilled alcohol",
+  "creativetab.drstone_tab": "Dr Stone Tab"
 }

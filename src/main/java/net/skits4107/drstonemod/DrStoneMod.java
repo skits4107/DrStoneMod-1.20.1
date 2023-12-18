@@ -24,6 +24,7 @@ import net.skits4107.drstonemod.entity.client.ModModelLayers;
 import net.skits4107.drstonemod.entity.client.PetrificationSpherRenderer;
 import net.skits4107.drstonemod.entity.client.PetrificationSphere;
 import net.skits4107.drstonemod.entity.client.PetrifiedEntityRenderer;
+import net.skits4107.drstonemod.item.ModCreativeModeTabs;
 import net.skits4107.drstonemod.item.ModItems;
 import net.skits4107.drstonemod.loot.ModLootModifiers;
 import org.slf4j.Logger;
@@ -49,6 +50,7 @@ public class DrStoneMod
         ModEntities.register(modEventBus);
         ModLootModifiers.register(modEventBus);
         ModBlocks.register(modEventBus);
+        ModCreativeModeTabs.register(modEventBus);
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
