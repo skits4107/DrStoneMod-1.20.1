@@ -1,18 +1,28 @@
 package net.skits4107.drstonemod.entity.event;
 
+import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.ambient.Bat;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.event.ServerChatEvent;
+import net.minecraftforge.event.entity.living.LivingBreatheEvent;
+import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.skits4107.drstonemod.DrStoneMod;
+import net.skits4107.drstonemod.block.ModBlocks;
 import net.skits4107.drstonemod.item.ModItems;
 import net.skits4107.drstonemod.item.custom.PetrificationItem;
+
+import java.util.Random;
 
 @Mod.EventBusSubscriber(modid = DrStoneMod.MOD_ID)
 public class ModEvents {
 
+    private static Random random = new Random();
     @SubscribeEvent
     public static void onChat(ServerChatEvent event) {
         String message = event.getMessage().getString();
@@ -41,7 +51,26 @@ public class ModEvents {
         }
     }
 
-    public static double getNum(String str, Player player){
+    @SubscribeEvent
+    public static void onLivingEntityUpdate(LivingEvent.LivingTickEvent event){
+        if (event.getEntity() instanceof Bat){
+            Entity entity = event.getEntity();
+            int val = random.nextInt(1000);
+            if (val == 0){
+                //entity.
+                BlockPos ground = findGround(entity.level(), entity.blockPosition());
+                //if ground was found
+                if (ground != null){
+                    //place poop one block above ground
+                    entity.level().setBlock(ground.above(), ModBlocks.GUANO.get().defaultBlockState(), 3);
+                }
+
+            }
+        }
+
+    }
+
+    private static double getNum(String str, Player player){
         if (str.length() == 0){
             player.displayClientMessage(Component.literal("no number input"), true);
             return -1;
@@ -56,6 +85,15 @@ public class ModEvents {
 
         }
 
+    }
+
+    private static BlockPos findGround(Level world, BlockPos start) {
+        //loops downwards until bedrock or non-air block.
+        BlockPos pos = start;
+        while (pos.getY() > -64 && world.isEmptyBlock(pos)) {
+            pos = pos.below();
+        }
+        return pos.getY() > -64 ? pos : null;
     }
 
 
