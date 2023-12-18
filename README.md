@@ -16,27 +16,28 @@ this is still a work in progress mod.
 
 **Revival fluid:**
 
-  - this can revive petrfied entities, just throw it at them.
+  - this can revive petrfied entities, just throw it at them. crafted from two distilled alcohol and one nitric acid
 
 **Guano:**
 
-  - bat poop. right now it doesnt spawn naturaally. soon will spawn in caves
+  - bat poop. it occasionally spawns below bats on the ground.
 
 **Nitric Acid:**
 
-  - Nitric acid. doesnt do anything yet but will be used in the crafting of revival fluid. nitric acid is crafted from a glass bottle and guano
+  - Nitric acid. doesnt do anything yet but will be used in the crafting of revival fluid. nitric acid is crafted from a glass bottle and guano in any slot of the crafting table.
 
 **Fermentation block**
 
-  - you can put sweet berries into the fermentation block and once filled up you can jump on it to crush the berries and the nafter a long time it will turn to wine which you can collect with a glass bottle.
+  - you can put sweet berries into the fermentation block and once filled up you can jump on it to crush the berries and then after a long time it will turn to wine which you can collect with a glass bottle.
+  - crafted like a cauldron but with oak wood planks
 
 **wine**
 
-  - an item that will be used to craft concentrated alcohol to make revival fluid, this hasnt been done yet. it will also be drinkable in the future but ist right now.
+  - an item that can be used to make distilled alcohol it will also be drinkable in the future but ist right now.
 
 **Distilled alcohol**
 
-- this is made by putting wine in the furnace for a while. it is used to craft revival fluid. two of these and one nitric acid make a revival fluid bottle.
+- this is made by putting wine in the furnace for a while. it is used to craft revival fluid.
 
 # known bugs:
 - countdown in on petrification device in the inventory is not specific to an item and aplied inventory wide, if the petrification item(s) is removed from invetory the countdown pauses and resumed when another one enters the inventory
@@ -47,11 +48,8 @@ this is still a work in progress mod.
   - fix current bugs
   - do some optimization, cleanup, documentation, etc.
   - add golden spear
-  - make petrification device spawn in certain structures where you can find it.
-  - add a way to get nitric acid and alcohol for crafting revival fluid.
-  - add platinum ore (part of getting nitric acid later on).
+  - add platinum ore (part of getting nitric acid later on in game).
   - add science stuff.
-  - make guano spawn naturally in cave.
   - make katana.
 
 # Credits
