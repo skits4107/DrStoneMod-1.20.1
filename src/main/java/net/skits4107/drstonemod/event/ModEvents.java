@@ -1,4 +1,4 @@
-package net.skits4107.drstonemod.entity.event;
+package net.skits4107.drstonemod.event;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
