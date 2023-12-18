@@ -26,7 +26,7 @@ public class ModCreativeModeTabs {
 
 
                         pOutput.accept(ModBlocks.FERMENTOR.get());
-
+                        pOutput.accept(ModBlocks.GUANO.get());
 
                     })
                     .build());
