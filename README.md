@@ -25,7 +25,7 @@ this is still a work in progress mod.
 
 **Nitric Acid:**
 
-  - Nitric acid. doesnt do anything yet but will be used in the crafting of revival fluid. nitric acid is crafted from a glass bottle and guano in any slot of the crafting table.
+  - Nitric acid. doesnt usedto craft revival fluid. nitric acid is crafted from a glass bottle and guano in any slot of the crafting table.
 
 **Fermentation block**
 
