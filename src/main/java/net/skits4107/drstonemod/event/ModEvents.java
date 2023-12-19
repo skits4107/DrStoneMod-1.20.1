@@ -53,8 +53,11 @@ public class ModEvents {
 
     @SubscribeEvent
     public static void onLivingEntityUpdate(LivingEvent.LivingTickEvent event){
-        if (event.getEntity() instanceof Bat){
-            Entity entity = event.getEntity();
+        Entity entity = event.getEntity();
+        if (entity.level().isClientSide){
+            return; //only place poop on server side
+        }
+        if (entity instanceof Bat){
             int val = random.nextInt(1000);
             if (val == 0){
                 //entity.
