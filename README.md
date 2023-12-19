@@ -9,6 +9,7 @@ this is still a work in progress mod.
  - this item can be thrown or kept inventory
   - takes input from chat in the format of "meters,seconds" replace the words with the wanted values.
  -  once the countdown is reached, it will create a petrification sphere of the desired size.
+ -  it has a 10% chance of being found within a given chest within big underwater ruins, a 20% chance per chest in the end cities, 4% per chest in the ancient ruins.
 
 **Petrification sphere:**
 
