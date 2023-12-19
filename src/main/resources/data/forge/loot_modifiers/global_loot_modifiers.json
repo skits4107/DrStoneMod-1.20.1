@@ -1,6 +1,8 @@
 {
   "entries": [
-    "drstonemod:petrification_device_in_desert_temple"
+    "drstonemod:petrification_device_in_ancient_city",
+    "drstonemod:petrification_device_in_end_city_treasure",
+    "drstonemod:petrification_device_in_underwater_ruin_big"
   ],
   "replace": false
 }
