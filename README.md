@@ -34,7 +34,7 @@ this is still a work in progress mod.
 
 **wine**
 
-  - an item that can be used to make distilled alcohol it will also be drinkable in the future but ist right now.
+  - an item that can be used to make distilled alcohol. it is also drinkable.
 
 **Distilled alcohol**
 
