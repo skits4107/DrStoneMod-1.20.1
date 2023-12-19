@@ -1,5 +1,7 @@
 package net.skits4107.drstonemod.item;
 
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -19,7 +21,11 @@ public class ModItems {
 
     public static RegistryObject<Item> NITRIC_ACID = ITEMS.register("nitric_acid", ()-> new Item(new Item.Properties().stacksTo(1)));
 
-    public static RegistryObject<Item> WINE = ITEMS.register("wine", () -> new Item(new Item.Properties().stacksTo(1)));
+    public static RegistryObject<Item> WINE = ITEMS.register("wine", () -> new Item(new Item.Properties().stacksTo(1).food(new FoodProperties.Builder().
+            nutrition(2).
+            saturationMod(0.05F).
+            effect(()-> new MobEffectInstance(MobEffects.CONFUSION, 200, 0), 1).
+            build())));;
 
     public static RegistryObject<Item> DISTILLED_ALCOHOL = ITEMS.register("distilled_alcohol", () -> new Item(new Item.Properties().stacksTo(1)));
 
