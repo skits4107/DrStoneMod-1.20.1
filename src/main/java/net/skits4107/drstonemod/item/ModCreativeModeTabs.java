@@ -27,6 +27,7 @@ public class ModCreativeModeTabs {
 
                         pOutput.accept(ModBlocks.FERMENTOR.get());
                         pOutput.accept(ModBlocks.GUANO.get());
+                        pOutput.accept(ModBlocks.POTASSIAM_SALT_ORE.get());
 
                     })
                     .build());

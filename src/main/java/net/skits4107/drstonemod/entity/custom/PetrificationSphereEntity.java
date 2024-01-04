@@ -80,7 +80,6 @@ public class PetrificationSphereEntity extends Entity {
         this.scale += 0.05; //increase radius by one every second (20 ticks a second)
         this.timer -= 1;
 
-
     }
 
     public static PetrificationSphereEntity create(double meters, Level level){

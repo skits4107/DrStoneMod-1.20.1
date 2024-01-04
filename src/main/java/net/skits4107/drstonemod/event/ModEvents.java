@@ -49,6 +49,7 @@ public class ModEvents {
         else{
             player.displayClientMessage(Component.literal("Invalid syntax: missing ','"), true);
         }
+
     }
 
     @SubscribeEvent

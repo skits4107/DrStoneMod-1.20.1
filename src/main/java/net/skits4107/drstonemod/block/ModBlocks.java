@@ -22,6 +22,10 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> FERMENTOR = registerBlock("fermentor", ()-> new FermentorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)));
 
+    public static final RegistryObject<Block> POTASSIAM_SALT_ORE = registerBlock("potassiam_salt_ore", ()-> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_ORE).requiresCorrectToolForDrops()));
+
+
+
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block){
         RegistryObject<T> toReturn = BLOCKS.register(name, block);
         registerBlockItem(name, toReturn);
@@ -34,4 +38,6 @@ public class ModBlocks {
     public static void register(IEventBus eventBus){
         BLOCKS.register(eventBus);
     }
+
+
 }

@@ -6,7 +6,11 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTabs;
+import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.common.MinecraftForge;
@@ -38,6 +42,8 @@ public class DrStoneMod
     // Directly reference a slf4j logger
     public static final Logger LOGGER = LogUtils.getLogger();
     // Create a Deferred Register to hold Blocks which will all be registered under the "examplemod" namespace
+    public static final ResourceKey<PlacedFeature> CUSTOM_ORE_PLACED_KEY =
+            ResourceKey.create(Registries.PLACED_FEATURE, new ResourceLocation(DrStoneMod.MOD_ID, "potassiam_salt_ore_placed"));
 
 
     public DrStoneMod()
@@ -61,6 +67,8 @@ public class DrStoneMod
 
 
     }
+
+
 
     private void commonSetup(final FMLCommonSetupEvent event)
     {
@@ -116,5 +124,7 @@ public class DrStoneMod
         public static void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event){
             event.registerLayerDefinition(ModModelLayers.PETRIFICATION_SPHERE_LAYER, PetrificationSphere::createBodyLayer);
         }
+
+
     }
 }

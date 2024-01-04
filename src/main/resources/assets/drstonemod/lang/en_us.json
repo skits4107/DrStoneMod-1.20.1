@@ -6,5 +6,6 @@
   "block.drstonemod.fermentor": "Fermentation block",
   "item.drstonemod.wine": "Wine",
   "item.drstonemod.distilled_alcohol": "distilled alcohol",
-  "creativetab.drstone_tab": "Dr Stone Tab"
+  "creativetab.drstone_tab": "Dr Stone Tab",
+  "block.drstonemod.potassiam_salt_ore": "Potassium Salt Ore"
 }

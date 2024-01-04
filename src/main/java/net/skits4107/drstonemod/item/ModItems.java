@@ -24,7 +24,7 @@ public class ModItems {
     public static RegistryObject<Item> WINE = ITEMS.register("wine", () -> new Item(new Item.Properties().stacksTo(1).food(new FoodProperties.Builder().
             nutrition(2).
             saturationMod(0.05F).
-            effect(()-> new MobEffectInstance(MobEffects.CONFUSION, 200, 0), 1).
+            effect(()-> new MobEffectInstance(MobEffects.CONFUSION, 20*20, 0), 1).
             build())));;
 
     public static RegistryObject<Item> DISTILLED_ALCOHOL = ITEMS.register("distilled_alcohol", () -> new Item(new Item.Properties().stacksTo(1)));
